@@ -57,7 +57,7 @@ pipeline {
                     sh """cd api;
                         echo "Cataloging API in Anypoint Platform'";
                         errorCode="Error";
-                        commandOutput=$(api-catalog publish-asset --descriptor-file=catalog.yaml \
+                        commandOutput=\$(api-catalog publish-asset --descriptor-file=catalog.yaml \
                         --host=${env.ANYPOINT_PLATFORM_URL} --organization=${env.ANYPOINT_PLATFORM_ORG_ID} \
                         --environment=${env.ENVIRONMENT} \
                         --client_id=${env.CLIENT_ID} --client_secret=${env.CLIENT_SECRET} \
