@@ -56,11 +56,21 @@ pipeline {
                     def branchName = scm.branches[0].name
                     sh """cd api;
                         echo "Cataloging API in Anypoint Platform'";
-                        api-catalog publish-asset --descriptor-file=catalog.yaml \
+                        errorCode="Error";
+                        commandOutput=$(api-catalog publish-asset --descriptor-file=catalog.yaml \
                         --host=${env.ANYPOINT_PLATFORM_URL} --organization=${env.ANYPOINT_PLATFORM_ORG_ID} \
                         --environment=${env.ENVIRONMENT} \
                         --client_id=${env.CLIENT_ID} --client_secret=${env.CLIENT_SECRET} \
-                        --trigger-criteria=branches:${branchName}"""   
+                        --trigger-criteria=branches:${branchName});
+                        if [[ $commandOutput == *"$errorCode"* ]]
+                            then
+                                echo "Error while Cataloging API - Please check the logs";
+                                exit 1;
+                            else
+                                echo "Success in Cataloging API";
+                                exit 0;
+                            fi
+                        """   
                 }
             }    
             post {
