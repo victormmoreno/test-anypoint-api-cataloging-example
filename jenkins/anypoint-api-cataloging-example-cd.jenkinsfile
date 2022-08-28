@@ -11,7 +11,7 @@ pipeline {
         ANYPOINT_PLATFORM_ORG_ID = credentials('anypoint.platform.org.id')
     }
     parameters {
-        choice( name: 'BRANCH', choices: "master\ndevelop", description: 'Project branch' )
+        choice( name: 'BRANCH', choices: "develop\nmaster", description: 'Project branch' )
         string( name: 'ANYPOINT_PLATFORM_URL', defaultValue: 'https://eu1.anypoint.mulesoft.com', description: 'URL for Anypoint Platform (Default: https://eu1.anypoint.mulesoft.com - Production Anypoint Platform)' )
         choice( name: 'ENVIRONMENT', choices: "sandbox\nproduction", description: 'Environment where the API documentation will be deployed' )
     }
