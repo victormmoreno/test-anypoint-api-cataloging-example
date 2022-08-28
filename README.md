@@ -1,0 +1,1 @@
+# anypoint-api-cataloging-example
