@@ -20,9 +20,7 @@ pipeline {
             steps {
                 script {
                     def githubUrl = scm.userRemoteConfigs[0].url
-                    def branchName = scm.branches[0].name
                     print "GitHub URL: " + githubUrl
-                    print "GitHub branch: " + branchName
                     echo "Checking out Release from GitHub..."
                     checkout([$class: 'GitSCM', 
                             branches: [[name: "${params.BRANCH}"]], 
