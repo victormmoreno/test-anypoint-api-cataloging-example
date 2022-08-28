@@ -7,8 +7,8 @@ pipeline {
     }
     environment {
         BUILD_VERSION = "build.${currentBuild.number}"
-        CLIENT_ID = credentials('anypoint.platform.clientId')
-        CLIENT_SECRET = credentials('anypoint.platform.clientSecret')
+        CLIENT_ID = credentials('anypoint.platform.cataloging.clientId')
+        CLIENT_SECRET = credentials('anypoint.platform.cataloging.clientSecret')
         ANYPOINT_PLATFORM_ORG_ID = credentials('anypoint.platform.org.id')
     }
     parameters {
