@@ -53,6 +53,7 @@ pipeline {
         stage('Cataloging API in Anypoint Platform') {
             steps {
                 script {
+                    def branchName = scm.branches[0].name
                     sh """cd api;
                         echo "Cataloging API in Anypoint Platform'";
                         api-catalog publish-asset --descriptor-file=catalog.yaml \
