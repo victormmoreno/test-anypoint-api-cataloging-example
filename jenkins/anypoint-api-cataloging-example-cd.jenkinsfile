@@ -57,7 +57,7 @@ pipeline {
                         --host=${env.ANYPOINT_PLATFORM_URL} --organization=${env.ANYPOINT_PLATFORM_ORG_ID} \
                         --environment=${env.ENVIRONMENT} \
                         --client_id=${env.CLIENT_ID} --client_secret=${env.CLIENT_SECRET} \
-                        --trigger-criteria=branches:${branchName}"""   
+                        --trigger-criteria=branches:$branchName"""   
                 }
             }    
             post {
