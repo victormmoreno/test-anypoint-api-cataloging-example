@@ -62,7 +62,7 @@ pipeline {
                         --environment=${env.ENVIRONMENT} \
                         --client_id=${env.CLIENT_ID} --client_secret=${env.CLIENT_SECRET} \
                         --trigger-criteria=branches:${branchName});
-                        if [[ \$commandOutput == *"\$errorCode"* ]]
+                        if [[ \$commandOutput == \*\"\$errorCode\"\* ]]
                             then
                                 echo "Error while Cataloging API - Please check the logs";
                                 exit 1;
