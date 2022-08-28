@@ -21,10 +21,12 @@ pipeline {
             steps {
                 script {
                     def githubUrl = scm.userRemoteConfigs[0].url
+                    def branchName = scm.branches[0].name
                     print "GitHub URL: " + githubUrl
+                    print "GitHub branch: " + branchName
                     echo "Checking out Release from GitHub..."
                     checkout([$class: 'GitSCM', 
-                            branches: [[name: "${params.BRANCH}"]], 
+                              branches: [[name: "${branchName}"]], 
                             doGenerateSubmoduleConfigurations: false, 
                             extensions: [], 
                             submoduleCfg: [], 
@@ -57,7 +59,7 @@ pipeline {
                         --host=${env.ANYPOINT_PLATFORM_URL} --organization=${env.ANYPOINT_PLATFORM_ORG_ID} \
                         --environment=${env.ENVIRONMENT} \
                         --client_id=${env.CLIENT_ID} --client_secret=${env.CLIENT_SECRET} \
-                        --trigger-criteria=branches:$branchName"""   
+                        --trigger-criteria=branches:${branchName}"""   
                 }
             }    
             post {
