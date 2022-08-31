@@ -79,12 +79,3 @@ securitySchemes:
             application/json:
               type: Error
               example: !include examples/Error.raml
-    delete:
-      description: Delete a Foo by id
-      responses:
-        204:
-        404:
-          body:
-            application/json:
-              type: Error
-              example: !include examples/Error.raml
